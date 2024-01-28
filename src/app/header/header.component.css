@@ -1,0 +1,26 @@
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 96px;
+  background-color: #33b5e5;
+  flex-direction: column;
+}
+
+.website-name {
+  color: #ffffff;
+}
+
+.navbar-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.navbar-link {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #ffffff;
+}

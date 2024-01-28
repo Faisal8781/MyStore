@@ -1,0 +1,44 @@
+.form-margin {
+  margin-bottom: 15px;
+}
+.input-raduis {
+  border-radius: 5px;
+  width: 325px;
+}
+
+.cart-item {
+  display: wrap;
+  flex-direction: row;
+  margin-bottom: 20px;
+  margin-right: 13%;
+}
+
+.checkout-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.cart-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 6%;
+}
+
+.cart-panel {
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+.empty-cart-message {
+  display: flex;
+  justify-content: center;
+  margin-top: 64px;
+}
+.details-amount {
+  display: flex;
+}
+.secret {
+  color: grey;
+  font-size: 13px;
+}

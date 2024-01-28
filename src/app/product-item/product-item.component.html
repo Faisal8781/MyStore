@@ -1,0 +1,33 @@
+<form
+  #form="ngForm"
+  (ngSubmit)="
+    onSubmit({
+      id: 1,
+      productId: product.id,
+      amount: toNumber(selectedOption),
+      price: toNumber(selectedOption) * product.price
+    })
+  "
+>
+  <div class="product-container">
+    <a [routerLink]="['/product', product.id]"
+      ><div>
+        <img class="product-image" src="{{ product.url }}" />
+      </div>
+    </a>
+    <p>{{ product.name }}</p>
+    <p>${{ product.price }}</p>
+
+    <select
+      class="select-input"
+      [(ngModel)]="selectedOption"
+      name="selectedOption"
+    >
+      <option *ngFor="let option of options" [value]="option.value">
+        {{ option.label }}
+      </option>
+    </select>
+
+    <input type="submit" class="btn btn-primary" value="Add to Cart" />
+  </div>
+</form>

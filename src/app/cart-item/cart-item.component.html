@@ -1,0 +1,19 @@
+<div class="cart-item-details">
+  <img src="{{ product.url }}" />
+  <div>
+    <h3>{{ product.name }}</h3>
+    <p>${{ product.price }}</p>
+    <label class="number-input">Amount</label>
+    <select
+      class="number-input"
+      [(ngModel)]="selectedOption"
+      name="selectedOption"
+      (ngModelChange)="update(toNumber(selectedOption))"
+    >
+      <option *ngFor="let option of options" [value]="option.value">
+        {{ option.label }}
+      </option>
+    </select>
+  </div>
+</div>
+<br />
