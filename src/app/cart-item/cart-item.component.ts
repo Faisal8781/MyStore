@@ -11,8 +11,9 @@ import { CartService } from '../services/cart.service';
 })
 export class CartItemComponent implements OnInit {
   @Input() cart: Cart;
-  @Input() total: number;
+  total: number;
   @Output() updateAmount: EventEmitter<Cart> = new EventEmitter();
+  @Output() removeFromCart: EventEmitter<Cart> = new EventEmitter();
   product: Product = { id: 1, name: '', price: 1, description: '', url: '' };
   options = [
     { label: '1', value: '1' },
@@ -20,9 +21,27 @@ export class CartItemComponent implements OnInit {
     { label: '3', value: '3' },
     { label: '4', value: '4' },
     { label: '5', value: '5' },
+    { label: '6', value: '6' },
+    { label: '7', value: '7' },
+    { label: '8', value: '8' },
+    { label: '9', value: '9' },
+    { label: '10', value: '10' },
+    { label: '11', value: '11' },
+    { label: '12', value: '12' },
+    { label: '13', value: '13' },
+    { label: '14', value: '14' },
+    { label: '15', value: '15' },
+    { label: '16', value: '16' },
+    { label: '17', value: '17' },
+    { label: '18', value: '18' },
+    { label: '19', value: '19' },
+    { label: '20', value: '20' },
   ];
   selectedOption: string;
-  constructor(private productServices: ProductsService) {
+  constructor(
+    private productServices: ProductsService,
+    private cartServices: CartService
+  ) {
     this.cart = {
       id: 1,
       productId: 1,
@@ -53,5 +72,10 @@ export class CartItemComponent implements OnInit {
   }
   toNumber(selectedOption: string): number {
     return parseInt(selectedOption);
+  }
+  removeitem(cart: Cart) {
+    this.removeFromCart.emit(cart);
+    // this.cartServices.removeFromCart(cart);
+    // this.total = this.cartServices.getTotalCost() - cart.price;
   }
 }

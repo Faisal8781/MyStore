@@ -42,3 +42,6 @@
   color: grey;
   font-size: 13px;
 }
+.error-message {
+  color: #f33a22;
+}

@@ -4,6 +4,7 @@
       *ngFor="let cart of cartList"
       [cart]="cart"
       (updateAmount)="updateTotal($event)"
+      (removeFromCart)="removeFromCart($event)"
     >
     </app-cart-item>
     <h3>Total:${{ total.toFixed(2) }}</h3>
@@ -52,7 +53,15 @@
           maxlength="16"
           required
           [(ngModel)]="creditcard"
+          #credit="ngModel"
+          [ngClass]="{ 'invalid-input': !validateCreditCard() }"
         />
+        <div
+          *ngIf="credit.dirty && !validateCreditCard()"
+          class="error-message"
+        >
+          Please enter a valid credit card number.
+        </div>
       </div>
       <br />
       <p class="secret">
@@ -61,7 +70,7 @@
       <input
         type="submit"
         class="btn btn-primary"
-        [disabled]="form.invalid"
+        [disabled]="form.invalid || !validateCreditCard()"
         value="Submit"
       />
     </form>

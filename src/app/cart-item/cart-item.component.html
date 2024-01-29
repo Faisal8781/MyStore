@@ -2,7 +2,16 @@
   <img src="{{ product.url }}" />
   <div>
     <h3>{{ product.name }}</h3>
-    <p>${{ product.price }}</p>
+    <p>
+      ${{ product.price }}
+      <input
+        type="button"
+        class="btn btn-primary"
+        (click)="removeitem(cart)"
+        value="❌"
+      />
+    </p>
+
     <label class="number-input">Amount</label>
     <select
       class="number-input"

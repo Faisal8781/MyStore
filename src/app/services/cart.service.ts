@@ -9,7 +9,7 @@ export class CartService {
   private totalCost: number = 0;
   private username: string = '';
   currentCart = this.cart.asObservable();
-  id: number = 1;
+  id: number = 0;
   cartServices: Cart[] = [];
   constructor() {}
 
@@ -23,6 +23,7 @@ export class CartService {
   setCartItems(items: Cart[]): void {
     this.cartServices = items;
   }
+
   getTotalCost(): number {
     return this.totalCost;
   }
@@ -35,5 +36,8 @@ export class CartService {
   }
   setUsername(username: string): void {
     this.username = username;
+  }
+  idIncerment(): number {
+    return (this.id += 1);
   }
 }

@@ -24,11 +24,35 @@ export class ProductListComponent implements OnInit {
   }
 
   idIncerment(): number {
-    return this.productServices.idIncerment();
+    return this.cartServices.idIncerment();
   }
   addtocart(cart: Cart) {
-    cart.id = this.idIncerment();
-    this.cart.push(cart);
-    this.cartServices.changeCart(this.cart);
+    if (this.cart.length === 0) {
+      cart.id = this.idIncerment();
+      this.cart.push(cart);
+      this.cartServices.changeCart(this.cart);
+    } else {
+      let productExists = false;
+      for (let i = 0; i < this.cart.length; i++) {
+        if (this.cart[i].productId === cart.productId) {
+          this.cart[i].amount += cart.amount;
+          if (this.cart[i].amount > 20) {
+            this.cart[i].amount = 20;
+            alert(
+              'You have reached the maximum quantity of 20 for this product.'
+            );
+            return;
+          }
+          productExists = true;
+          break;
+        }
+      }
+      if (!productExists) {
+        cart.id = this.idIncerment();
+        this.cart.push(cart);
+      }
+      this.cartServices.changeCart(this.cart);
+    }
+    alert(`Proudct added successfully to shoppingcart`);
   }
 }

@@ -15,6 +15,7 @@ export class CartComponent implements OnInit {
   cartList: Cart[] = [];
   items: Confirmation[] = [];
   total: number = 0;
+  index: number = 0;
   constructor(private cartServices: CartService, private router: Router) {}
 
   ngOnInit(): void {
@@ -40,8 +41,24 @@ export class CartComponent implements OnInit {
       this.cartServices.setTotalCost(this.total);
     });
   }
+
+  validateCreditCard() {
+    const numberRegex = /^[0-9]+$/;
+    if (!numberRegex.test(this.creditcard)) {
+      return false;
+    }
+
+    return true;
+  }
+
+  removeFromCart(item: Cart): void {
+    this.total = this.total - item.price;
+    this.index = this.cartList.indexOf(item);
+    this.cartList.splice(this.index, 1);
+    alert(`item removed successfully`);
+  }
   formsubmited() {
-    if (this.cartList.length !== 0) {
+    if (this.cartList.length !== 0 && this.validateCreditCard()) {
       this.cartServices.setCartItems(this.cartList);
       this.cartServices.setTotalCost(this.total);
       this.cartServices.setUsername(this.name);
