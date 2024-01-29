@@ -89,6 +89,13 @@ export class ProductItemDetailComponent implements OnInit {
         if (this.cart[i].productId === this.product.id) {
           this.cart[i].amount += cart.amount;
           productExists = true;
+          if (this.cart[i].amount > 20) {
+            this.cart[i].amount = 20;
+            alert(
+              'You have reached the maximum quantity of 20 for this product.'
+            );
+            return;
+          }
           break;
         }
       }
